@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programas Académicos</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Inicio</a></li>
+                <li><a href="programs.html">Programas Académicos</a></li>
+                <li><a href="scholarships.html">Becas y Ayudas</a></li>
+                <li><a href="faq.html">FAQ</a></li>
+                <li><a href="login.html">Iniciar Sesión</a></li>
+                <li><a href="register.html">Registrarse</a></li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <h1>Programas Académicos</h1>
+        <div class="filter">
+            <label for="faculty">Facultad:</label>
+            <select id="faculty">
+                <option value="todas">Todas</option>
+                <option value="ciencias">Ciencias</option>
+                <option value="humanidades">Humanidades</option>
+                <option value="ingenieria">Ingeniería</option>
+            </select>
+
+            <label for="modality">Modalidad:</label>
+            <select id="modality">
+                <option value="todas">Todas</option>
+                <option value="presencial">Presencial</option>
+                <option value="virtual">Virtual</option>
+            </select>
+
+            <label for="duration">Duración:</label>
+            <select id="duration">
+                <option value="todas">Todas</option>
+                <option value="corta">Corta</option>
+                <option value="media">Media</option>
+                <option value="larga">Larga</option>
+            </select>
+
+            <button id="filterButton">Filtrar</button>
+        </div>
+
+        <div id="programList">
+            <h2>Listado de Programas</h2>
+            <ul>
+                <li>
+                    <h3>Programa de Ciencias de la Computación</h3>
+                    <p>Descripción</p>
+                </li>
+                <li>
+                    <h3>Programa de Psicología</h3>
+                    <p>Descripción</p>
+                </li>
+                <li>
+                    <h3>Programa de Ingeniería Civil</h3>
+                    <p>Descripción</p>
+                </li>
+            </ul>
+        </div>
+    </main>
+    <footer>
+        <p>&copy;Universidad Nacional de San Antonio Abad del Cusco</p>
+    </footer>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
