@@ -122,6 +122,22 @@ footer {
     width: 100%;
 }
 
+/* Estilos del formulario */
+form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+label, input, button {
+    margin-bottom: 15px;
+}
+
+button {
+    align-self: center;
+}
+
 /* Media queries */
 @media (max-width: 768px) {
     nav ul {
