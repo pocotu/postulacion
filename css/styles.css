@@ -9,7 +9,7 @@ body {
 
 /* Header y navegación */
 header {
-    background: linear-gradient(135deg, #1a237e 0%, #303f9f 100%);
+    background: linear-gradient(135deg, rgb(149, 27, 64) 0%, rgb(149, 27, 64) 100%);
     color: #ffffff;
     padding: 15px 0;
     box-shadow: 0 2px 5px rgba(0,0,0,0.1);
@@ -38,7 +38,7 @@ nav a {
 }
 
 nav a:hover {
-    background: rgba(255,255,255,0.1);
+    background: rgb(212, 151, 82);
     transform: translateY(-2px);
 }
 
@@ -58,7 +58,7 @@ section {
 }
 
 h1 {
-    color: #1a237e;
+    color: rgb(212, 151, 82);
     font-size: 2.5em;
     margin-bottom: 20px;
     text-align: center;
@@ -73,7 +73,7 @@ h1 {
 /* Enlace destacado */
 .highlighted-link {
     display: inline-block;
-    background: #2e7d32;
+    background: rgb(149, 27, 64);
     color: white;
     padding: 15px 30px;
     border-radius: 25px;
@@ -84,7 +84,7 @@ h1 {
 }
 
 .highlighted-link:hover {
-    background: #1b5e20;
+    background: rgb(149, 27, 64);
     transform: translateY(-2px);
     box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
@@ -113,7 +113,7 @@ h1 {
 footer {
     text-align: center;
     padding: 20px 0;
-    background: #1a237e;
+    background: rgb(149, 27, 64);
     color: #ffffff;
     position: relative;
     bottom: 0;

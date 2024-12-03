@@ -1,63 +1,48 @@
 // server.js
 const express = require('express');
 const bodyParser = require('body-parser');
-const sql = require('mssql');
-const multer = require('multer');
-const path = require('path');
+const { Connection, Request } = require('tedious');
 const app = express();
 const port = 3000;
 
-// Configuración SQL Server actualizada
+// Configuración SQL Server con tedious
 const config = {
   server: 'K4LY\\SQLEXPRESS',
-  database: 'UniversidadDB',
-  pool: {
-    max: 10,
-    min: 0,
-    idleTimeoutMillis: 30000
+  authentication: {
+    type: 'default',
+    options: {
+      trustedConnection: true
+    }
   },
   options: {
+    database: 'UniversidadDB',
     trustServerCertificate: true,
-    trustedConnection: true,
-    enableArithAbort: true,
     encrypt: false,
-    integratedSecurity: true
+    instanceName: 'SQLEXPRESS'
   }
 };
 
-// Test de conexión explícito
-async function testConnection() {
-  try {
-    const pool = await sql.connect(config);
-    const result = await pool.request().query('SELECT 1');
-    console.log('Test de conexión exitoso');
-    return pool;
-  } catch (err) {
-    console.error('Error de conexión:', err);
-    throw err;
-  }
+// Middleware
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+// Test de conexión
+function testConnection() {
+  const connection = new Connection(config);
+  
+  connection.on('connect', (err) => {
+    if (err) {
+      console.error('Error de conexión:', err);
+      return;
+    }
+    console.log('Conexión exitosa a SQL Server');
+  });
+
+  connection.connect();
 }
 
-// Iniciar servidor con test de conexión
-async function iniciarServidor() {
-  try {
-    // Middleware setup
-    app.use(bodyParser.json());
-    app.use(bodyParser.urlencoded({ extended: true }));
-    
-    // Test conexión antes de iniciar
-    const pool = await testConnection();
-    
-    // Iniciar servidor solo si la conexión es exitosa
-    app.listen(port, () => {
-      console.log(`Servidor ejecutándose en el puerto ${port}`);
-    });
-
-    return pool;
-  } catch (err) {
-    console.error('Error fatal al iniciar servidor:', err);
-    process.exit(1);
-  }
-}
-
-iniciarServidor();
+// Start server
+app.listen(port, () => {
+  testConnection();
+  console.log(`Servidor escuchando en el puerto ${port}`);
+});
